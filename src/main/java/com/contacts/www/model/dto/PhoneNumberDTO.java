@@ -5,5 +5,7 @@ import lombok.Data;
 @Data
 public class PhoneNumberDTO {
 
+    private Long id;
+
     private String phoneNumber;
 }

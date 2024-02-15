@@ -20,7 +20,8 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-
+    // Here I can check is admin logged yet , in this situation it's not necessary because I have configured spring to prevent use them "/**"
+    // Here can be written custom check for example : isAdmin, hasSpecificRole , etc..
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public ResponseEntity<Object> addNewUser() {
@@ -28,14 +29,14 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("isAuthenticated()")
+
     @PutMapping("/edit")
     public ResponseEntity<Object> updateUserData() {
 
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("isAuthenticated()")
+
     @GetMapping("/get/all")
     public ResponseEntity<Object> getAllUsers(
             @RequestParam(name = "firstName", defaultValue = "", required = false) String firstName,
@@ -44,14 +45,14 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("isAuthenticated()")
+
     @GetMapping("/get/{id}")
     public ResponseEntity<Object> getUserById(@PathVariable Long id) {
 
         return ResponseEntity.ok().build();
     }
 
-    @PreAuthorize("isAuthenticated()")
+
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<Object> removeUserById(@PathVariable Long id) {
 
