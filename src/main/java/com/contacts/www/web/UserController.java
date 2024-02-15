@@ -1,10 +1,15 @@
 package com.contacts.www.web;
 
+import com.contacts.www.model.dto.EmailAddressDTO;
+import com.contacts.www.model.dto.PhoneNumberDTO;
+import com.contacts.www.model.dto.UserDTO;
+import com.contacts.www.model.entity.UserEntity;
 import com.contacts.www.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -21,6 +26,7 @@ public class UserController {
     }
 
     // Here I can check is admin logged yet , in this situation it's not necessary because I have configured spring to prevent use them "/**"
+    // Spring configure can be found on config/ApplicationSecurityConfiguration
     // Here can be written custom check for example : isAdmin, hasSpecificRole , etc..
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
@@ -38,11 +44,30 @@ public class UserController {
 
 
     @GetMapping("/get/all")
-    public ResponseEntity<Object> getAllUsers(
-            @RequestParam(name = "firstName", defaultValue = "", required = false) String firstName,
-            @RequestParam(name = "pageNo", defaultValue = "0", required = false) int pageNo) {
+    public ResponseEntity<Object> getAllUsersOrFilter(
+            @RequestParam(name = "first_name", defaultValue = "", required = false) String firstName,
+            @RequestParam(name = "last_name", defaultValue = "", required = false) String lastName) {
 
-        return ResponseEntity.ok().build();
+        final List<UserEntity> allOrByFilter = userService.findAllOrByFilter(firstName, lastName);
+
+        List<UserDTO> userDTOList = allOrByFilter.stream()
+                .map(userEntity -> {
+                  UserDTO userDTO = modelMapper.map(userEntity, UserDTO.class);
+                  userDTO.setOtherEmailAddresses(
+                          userEntity.getOtherEmailAddressEntities()
+                                  .stream()
+                                  .map(emailAddressEntity -> modelMapper.map(emailAddressEntity, EmailAddressDTO.class))
+                                  .toList());
+                  userDTO.setOtherPhoneNumbers(
+                          userEntity.getOtherPhoneNumberEntities()
+                                  .stream()
+                                  .map(phoneNumberEntity -> modelMapper.map(phoneNumberEntity, PhoneNumberDTO.class))
+                                  .toList());
+                  return userDTO;
+                })
+                .toList();
+
+        return ResponseEntity.ok(userDTOList);
     }
 
 

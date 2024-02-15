@@ -1,0 +1,64 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "1234567890",
+    "emailAddress": "john.doe@example.com",
+    "otherPhoneNumbers": [
+      {
+        "phoneNumber": "0987654321"
+      },
+      {
+        "phoneNumber": "5551234567"
+      }
+    ],
+    "otherEmailAddresses": [
+      {
+        "emailAddress": "doe.john@example.com"
+      },
+      {
+        "emailAddress": "john.doe@company.com"
+      }
+    ]
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "phoneNumber": "9876543210",
+    "emailAddress": "alice.smith@example.com",
+    "otherPhoneNumbers": [
+      {
+        "phoneNumber": "4445556666"
+      }
+    ],
+    "otherEmailAddresses": [
+      {
+        "emailAddress": "smith.alice@example.com"
+      }
+    ]
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Johnson",
+    "phoneNumber": "5551239876",
+    "emailAddress": "michael.johnson@example.com",
+    "otherPhoneNumbers": [],
+    "otherEmailAddresses": []
+  },
+  {
+    "firstName": "Emily",
+    "lastName": "Brown",
+    "phoneNumber": "9998887777",
+    "emailAddress": "emily.brown@example.com",
+    "otherPhoneNumbers": [],
+    "otherEmailAddresses": []
+  },
+  {
+    "firstName": "David",
+    "lastName": "Miller",
+    "phoneNumber": "3334445555",
+    "emailAddress": "david.miller@example.com",
+    "otherPhoneNumbers": [],
+    "otherEmailAddresses": []
+  }
+]

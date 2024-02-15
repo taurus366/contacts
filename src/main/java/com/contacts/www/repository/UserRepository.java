@@ -13,6 +13,22 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Optional<UserEntity> findByEmailAddress(String email);
 
-    @Query("SELECT u FROM UserEntity u WHERE u.firstName LIKE %:fName%")
-    List<UserEntity> findByFirstNameContaining(@Param("fName") String firstName);
+    @Query("SELECT DISTINCT u FROM UserEntity u WHERE " +
+            "(:fName is null or u.firstName LIKE %:fName%) " +
+            "AND (:lName is null or u.lastName LIKE %:lName%)")
+    List<UserEntity> findAllOrFilter(
+            @Param("fName") String firstName,
+            @Param("lName") String lastName
+    );
+
+//    @Query("SELECT DISTINCT u FROM UserEntity u  " +
+//            "LEFT JOIN FETCH u.otherEmailAddressEntities " +
+//            "WHERE (:fName is null or u.firstName LIKE %:fName%) " +
+//            "AND (:lName is null or u.lastName LIKE %:lName%)")
+//    List<UserEntity> findAllOrFilter(
+//            @Param("fName") String firstName,
+//            @Param("lName") String lastName
+//    );
+
+
 }

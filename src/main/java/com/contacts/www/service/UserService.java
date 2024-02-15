@@ -6,15 +6,11 @@ import java.util.List;
 
 public interface UserService {
 
-    UserEntity findUserByEmail(String email);
-
-    List<UserEntity> findAllUsers();
-
-    Boolean deleteUser(UserEntity entity);
+      Boolean deleteUser(UserEntity entity);
 
     UserEntity createNewUser(UserEntity entity);
 
-    List<UserEntity> findAllByFirstNameContaining(String firstName);
+    List<UserEntity> findAllOrByFilter(String firstName, String lastName);
 
     UserEntity findUserById(Long id);
 

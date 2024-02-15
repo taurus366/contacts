@@ -19,16 +19,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity findUserByEmail(String email) {
-        return userRepository.findByEmailAddress(email).orElseThrow(() -> new UserNotFoundException(ErrorMessages.USER_NOT_FOUND));
-    }
-
-    @Override
-    public List<UserEntity> findAllUsers() {
-        return userRepository.findAll();
-    }
-
-    @Override
     public Boolean deleteUser(UserEntity entity) {
         userRepository.delete(entity);
         return true;
@@ -40,8 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> findAllByFirstNameContaining(String firstName) {
-        return userRepository.findByFirstNameContaining(firstName);
+    public List<UserEntity> findAllOrByFilter(String firstName, String lastName) {
+        return userRepository.findAllOrFilter(firstName, lastName);
     }
 
     @Override

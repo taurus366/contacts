@@ -1,6 +1,5 @@
 package com.contacts.www.model.dto;
 
-import com.contacts.www.model.entity.EmailAddress;
 import lombok.Data;
 
 import java.util.List;

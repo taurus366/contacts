@@ -24,10 +24,10 @@ public class UserEntity extends BaseEntity {
     private String phoneNumber;
 
     @OneToMany(cascade = {CascadeType.ALL})
-    private List<PhoneNumber> otherPhoneNumbers = new ArrayList<>();
+    private List<PhoneNumberEntity> otherPhoneNumberEntities = new ArrayList<>();
 
     @OneToMany(cascade = {CascadeType.ALL})
-    private List<EmailAddress> otherEmailAddresses = new ArrayList<>();
+    private List<EmailAddressEntity> otherEmailAddressEntities = new ArrayList<>();
 
     @Column(nullable = false)
     private String emailAddress;

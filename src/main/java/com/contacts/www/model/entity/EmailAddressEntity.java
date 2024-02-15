@@ -9,12 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "phone_number")
-public class PhoneNumber extends BaseEntity{
+@Table(name = "email_address")
+public class EmailAddressEntity extends BaseEntity {
 
     @Column
-    private String phoneNumber;
+    private String emailAddress;
 }
