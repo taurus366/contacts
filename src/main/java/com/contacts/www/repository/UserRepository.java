@@ -21,14 +21,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
             @Param("lName") String lastName
     );
 
-//    @Query("SELECT DISTINCT u FROM UserEntity u  " +
-//            "LEFT JOIN FETCH u.otherEmailAddressEntities " +
-//            "WHERE (:fName is null or u.firstName LIKE %:fName%) " +
-//            "AND (:lName is null or u.lastName LIKE %:lName%)")
-//    List<UserEntity> findAllOrFilter(
-//            @Param("fName") String firstName,
-//            @Param("lName") String lastName
-//    );
-
 
 }

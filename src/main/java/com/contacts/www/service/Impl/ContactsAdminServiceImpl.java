@@ -23,6 +23,7 @@ public class ContactsAdminServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+
         AdminEntity adminEntity = adminRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException(String.format("Admin with username: %s doesn't exists", username)));

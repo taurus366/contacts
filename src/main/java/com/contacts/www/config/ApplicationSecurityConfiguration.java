@@ -50,7 +50,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin/login", "/h2-console/**", "/h2-console").permitAll()
+                .antMatchers("/admin/login", "/h2-console/**", "/h2-console", "/admin/status").permitAll()
 //                .antMatchers("/user/**", "/admin/logout").authenticated()
                 .antMatchers("/**").authenticated()
                 .and()
@@ -72,6 +72,9 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .sessionManagement().maximumSessions(10);
     }
 
+
+
+
     @Bean
     public DaoAuthenticationProvider authProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -89,11 +92,11 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
 
 
-// its necessary because of http, so browser gives CORS error
+// its necessary because of http, so browser gives CORS error , Origins could be edited
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of( "http://localhost:4200", "http://localhost:8080", "http://77.71.76.17:8080", "http://77.71.76.17:4200", "http://192.168.0.178:4200"));
+        configuration.setAllowedOrigins(List.of( "http://localhost:4200", "http://localhost:8080"));
         configuration.setAllowedMethods(List.of("POST, GET, OPTIONS, DELETE"));
 //        configuration.setAllowCredentials(true);
         //the below three lines will add the relevant CORS response headers

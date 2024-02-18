@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-      Boolean deleteUser(UserEntity entity);
+    Boolean deleteUser(UserEntity entity);
 
     UserEntity createNewUser(UserEntity entity);
 
@@ -15,6 +15,5 @@ public interface UserService {
     UserEntity findUserById(Long id);
 
     UserEntity updateExistsUser(UserEntity entity);
-
 
 }

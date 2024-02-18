@@ -19,5 +19,5 @@ public class UserDTO {
 
     private List<PhoneNumberDTO> otherPhoneNumbers;
 
-    List<EmailAddressDTO> otherEmailAddresses;
+    private List<EmailAddressDTO> otherEmailAddresses;
 }

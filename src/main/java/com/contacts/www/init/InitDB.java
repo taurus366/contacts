@@ -48,7 +48,6 @@ public class InitDB implements CommandLineRunner {
 
     private void initUsers() {
         final List<UserEntity> all = userRepository.findAll();
-        System.out.println(all.size());
         if(all.isEmpty()) {
 
             ObjectMapper mapper = new ObjectMapper();
@@ -65,7 +64,7 @@ public class InitDB implements CommandLineRunner {
 
                userRepository.saveAll(userEntityList);
 
-
+                System.out.printf("Initialized %d records to DB%n", userEntityList.size());
 
 
             } catch (IOException e) {

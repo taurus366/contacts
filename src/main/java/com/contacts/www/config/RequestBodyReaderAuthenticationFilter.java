@@ -28,7 +28,7 @@ public class RequestBodyReaderAuthenticationFilter extends UsernamePasswordAuthe
 
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         String requestBody;
         try {
             BufferedReader reader = request.getReader();
