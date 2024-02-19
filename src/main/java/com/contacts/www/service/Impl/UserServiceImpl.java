@@ -38,9 +38,4 @@ public class UserServiceImpl implements UserService {
     public UserEntity findUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(ErrorMessages.USER_NOT_FOUND));
     }
-
-    @Override
-    public UserEntity updateExistsUser(UserEntity entity) {
-        return userRepository.save(entity);
-    }
 }

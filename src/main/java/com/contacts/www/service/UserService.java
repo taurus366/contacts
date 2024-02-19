@@ -13,7 +13,4 @@ public interface UserService {
     List<UserEntity> findAllOrByFilter(String firstName, String lastName);
 
     UserEntity findUserById(Long id);
-
-    UserEntity updateExistsUser(UserEntity entity);
-
 }
