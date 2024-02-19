@@ -8,7 +8,6 @@ A Java application for managing contacts.
 - [Usage](#usage)
 - [Tests](#tests)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 The Contacts Management System is a Java application designed to help users organize and manage their contacts efficiently. It provides features for adding, editing, and deleting contacts, as well as searching and filtering capabilities.
